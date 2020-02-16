@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>UserStore:Edit User</title>
+    <style>
+        th {align:left}
+    </style>
+</head>
+<body>
+<p align="center"> Edit user information</p>
+
+<form action="/user/edit" method="POST">
+    <table align="center" border=0>
+        <tr>
+            <th>Id</th>
+            <td><input type="text" name="id" value="${user.id}"/></td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td><input type="text" name="first_name" value="${user.firstName}"/></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><input type="text" name="last_name" value="${user.lastName}"/></td>
+        </tr>
+        <tr>
+            <th>Salary</th>
+            <td><input type="text" name="salary" value="${user.salary}"/></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td><input type="submit" value="Ok"></td>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

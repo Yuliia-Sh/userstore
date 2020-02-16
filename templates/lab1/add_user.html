@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>UserStore:Add User</title>
+</head>
+<body>
+<p align="center"> Add new user</p>
+
+<form action="/user/add" method="POST">
+<table align="center" border=0>
+
+    <tr>
+        <th>Id</th>
+        <td><input type="text" name="id"/></td>
+    </tr>
+    <tr>
+        <th>First Name</th>
+        <td><input type="text" name="first_name"/></td>
+    </tr>
+    <tr>
+        <th>Last Name</th>
+        <td><input type="text" name="last_name"/></td>
+    </tr>
+    <tr>
+        <th>Salary</th>
+        <td><input type="text" name="salary"/></td>
+    </tr>
+    <#if message??>
+      <tr>
+        <th colspan="2">${message}</th>
+      </tr>
+    </#if>
+    <tr>
+        <th></th>
+        <td><input type="submit" value="Ok"></td>
+    </tr>
+</table>
+
+</form>
+</body>
+</html>
