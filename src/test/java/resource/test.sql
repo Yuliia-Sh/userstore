@@ -1,10 +1,11 @@
-
-CREATE TABLE users(
-id integer PRIMARY KEY,
-first_name text,
-last_name text,
-salary integer
+CREATE TABLE users (
+ id integer PRIMARY KEY,
+ first_name VARCHAR(15),
+ last_name  VARCHAR(30),
+ salary     INTEGER
 );
+
+
 INSERT INTO users(id, first_name, last_name, salary)
 VALUES (1, 'Yuliia','Semerenko',320);
 INSERT INTO users(id, first_name, last_name, salary)

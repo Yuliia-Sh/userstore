@@ -1,6 +1,6 @@
-package com.study.lab1.main;
+package com.userstore.main;
 
-import com.study.lab1.servlets.*;
+import com.userstore.web.servlets.*;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;

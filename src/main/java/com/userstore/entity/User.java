@@ -1,15 +1,15 @@
-package com.study.lab1.model;
+package com.userstore.entity;
 
 public class User {
     private int id;
     private String firstName;
     private String lastName;
-    private double salary;
+    private int salary;
 
     public User(){
     }
 
-    public User(int id, String firstName, String lastName, double salary) {
+    public User(int id, String firstName, String lastName, int salary) {
         this.id = id;
         this.salary = salary;
         this.firstName = firstName;
@@ -28,7 +28,7 @@ public class User {
         return lastName;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
@@ -36,7 +36,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 

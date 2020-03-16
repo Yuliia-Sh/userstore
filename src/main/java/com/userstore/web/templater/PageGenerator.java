@@ -1,8 +1,9 @@
-package com.study.lab1.templater;
+package com.userstore.web.templater;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import freemarker.template.Version;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.Map;
 
 
 public class PageGenerator {
-    private static final String HTML_DIR = "templates/lab1";
+    private static final String TEMPLATE_DIR = "templates";
 
     private static PageGenerator pageGenerator;
     private final Configuration cfg;
@@ -26,7 +27,7 @@ public class PageGenerator {
     public String getPage(String filename, Map<String, Object> data) {
         Writer stream = new StringWriter();
         try {
-            Template template = cfg.getTemplate(HTML_DIR + File.separator + filename);
+            Template template = cfg.getTemplate(TEMPLATE_DIR + File.separator + filename);
             template.process(data, stream);
         } catch (IOException | TemplateException e) {
             throw new RuntimeException(e);
@@ -35,6 +36,7 @@ public class PageGenerator {
     }
 
     private PageGenerator() {
-        cfg = new Configuration();
+        cfg = new Configuration(new Version(2, 3, 29));
+        cfg.setClassForTemplateLoading(this.getClass(), "/");
     }
 }

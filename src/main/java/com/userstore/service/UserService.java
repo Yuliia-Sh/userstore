@@ -1,14 +1,10 @@
-package com.study.lab1.service;
+package com.userstore.service;
 
-import com.study.lab1.dao.UserDao;
-import com.study.lab1.model.User;
-import com.study.lab1.templater.PageGenerator;
+import com.userstore.dao.UserDao;
+import com.userstore.entity.User;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UserService {
     private UserDao userDao = new UserDao();
@@ -33,7 +29,7 @@ public class UserService {
         if (errorMessage.isEmpty()) {
             userDao.add(user);
         } else {
-            throw new Exception(errorMessage);
+            throw new RuntimeException(errorMessage);
         }
     }
 
@@ -42,21 +38,12 @@ public class UserService {
         if (errorMessage.isEmpty()) {
             userDao.edit(user);
         } else {
-            throw new Exception(errorMessage);
+            throw new RuntimeException(errorMessage);
         }
     }
 
     public void deleteUser(int id) throws SQLException {
         userDao.delete(id);
-    }
-
-    public User getUserFromRequest (HttpServletRequest request) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String firstName = request.getParameter("first_name");
-        String lastName = request.getParameter("last_name");
-        Double salary=Double.parseDouble(request.getParameter("salary"));
-
-        return new User(id, firstName, lastName, salary);
     }
 
     private String checkUserData(User user) {

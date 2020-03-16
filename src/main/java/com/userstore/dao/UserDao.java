@@ -1,7 +1,7 @@
-package com.study.lab1.dao;
+package com.userstore.dao;
 
-import com.study.lab1.datasource.PostgresqlDatasource;
-import com.study.lab1.model.User;
+import com.userstore.dao.jdbc.PostgresqlDatasource;
+import com.userstore.entity.User;
 
 import java.sql.SQLException;
 import java.util.List;
