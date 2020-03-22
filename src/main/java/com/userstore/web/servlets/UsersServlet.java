@@ -17,10 +17,16 @@ import java.util.Map;
 
 public class UsersServlet extends HttpServlet {
 
+    UserService userService;
+
+    public UsersServlet(UserService userService) {
+        this.userService = userService;
+    }
+
+
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
 
-        UserService userService = UserService.getInstance();
         try {
             List<User> users = userService.getAllUsers();
 

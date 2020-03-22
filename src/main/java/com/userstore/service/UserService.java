@@ -7,21 +7,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class UserService {
-    private UserDao userDao = new UserDao();
-    private static UserService instance;
+    private UserDao userDao;
 
-    private UserService() { }
-
-    public static synchronized UserService getInstance() {
-        if (instance == null) {
-            instance = new UserService();
-        }
-        return instance;
+    public UserService(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     public List<User> getAllUsers() throws SQLException {
-       List<User> users = userDao.getAllUsers();
-       return users;
+        List<User> users = userDao.getAllUsers();
+        return users;
     }
 
     public void addUser(User user) throws Exception {
@@ -47,12 +41,12 @@ public class UserService {
     }
 
     private String checkUserData(User user) {
-        String errorMessage="";
-        if (user.getFirstName()==null || user.getFirstName().isEmpty()) {
+        String errorMessage = "";
+        if (user.getFirstName() == null || user.getFirstName().isEmpty()) {
             errorMessage = "First Name should be filled";
-        } else if (user.getLastName()==null || user.getLastName().isEmpty()) {
+        } else if (user.getLastName() == null || user.getLastName().isEmpty()) {
             errorMessage = "Last Name should be filled";
-        } else if (user.getSalary()<0) {
+        } else if (user.getSalary() < 0) {
             errorMessage = "Salary should be positive value";
         }
         return errorMessage;

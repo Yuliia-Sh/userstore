@@ -17,6 +17,12 @@ import java.util.Map;
 
 public class AddUserServlet extends HttpServlet {
 
+    UserService userService;
+
+    public AddUserServlet(UserService userService) {
+        this.userService = userService;
+    }
+
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,7 +31,7 @@ public class AddUserServlet extends HttpServlet {
         root.put("first_name", "");
         root.put("id", null);
         root.put("last_name", "");
-        root.put("salary",null);
+        root.put("salary", null);
 
         response.getWriter().println(PageGenerator.instance().getPage("add_user.html", root));
 
@@ -38,23 +44,22 @@ public class AddUserServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
 
-        UserService userService = UserService.getInstance();
-        User user= WebUtil.getUserFromRequest(request);
+        User user = WebUtil.getUserFromRequest(request);
 
         response.setContentType("text/html;charset=utf-8");
         Map<String, Object> pageVariables = new HashMap<>();
 
         try {
-              userService.addUser(user);
-              pageVariables.put("message", user.toString() + " is added");
-              response.getWriter().println(PageGenerator.instance().getPage("message_success.html", pageVariables));
-              response.setStatus(HttpServletResponse.SC_OK);
+            userService.addUser(user);
+            pageVariables.put("message", user.toString() + " is added");
+            response.getWriter().println(PageGenerator.instance().getPage("message_success.html", pageVariables));
+            response.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
-                e.printStackTrace();
-                pageVariables.put("message", e.getMessage());
-                response.getWriter().println(PageGenerator.instance().getPage("message.html", pageVariables));
-                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            }
+            e.printStackTrace();
+            pageVariables.put("message", e.getMessage());
+            response.getWriter().println(PageGenerator.instance().getPage("message.html", pageVariables));
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }
     }
 }
 

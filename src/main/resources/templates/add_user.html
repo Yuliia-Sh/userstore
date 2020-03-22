@@ -9,28 +9,29 @@
 
 <form action="/user/add" method="POST">
 <table align="center" border=0>
+    <#if message??>
+        <tr>
+            <th colspan="2">${message}</th>
+        </tr>
+    </#if>
 
     <tr>
         <th>Id</th>
-        <td><input type="text" name="id"/></td>
+        <td><input type="text" name="id" required/></td>
     </tr>
     <tr>
         <th>First Name</th>
-        <td><input type="text" name="first_name"/></td>
+        <td><input type="text" name="first_name" required/></td>
     </tr>
     <tr>
         <th>Last Name</th>
-        <td><input type="text" name="last_name"/></td>
+        <td><input type="text" name="last_name" required/></td>
     </tr>
     <tr>
         <th>Salary</th>
-        <td><input type="text" name="salary"/></td>
+        <td><input type="text" name="salary" required/></td>
     </tr>
-    <#if message??>
-      <tr>
-        <th colspan="2">${message}</th>
-      </tr>
-    </#if>
+
     <tr>
         <th></th>
         <td><input type="submit" value="Ok"></td>

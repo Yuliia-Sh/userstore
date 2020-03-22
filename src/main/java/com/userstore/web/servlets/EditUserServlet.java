@@ -16,10 +16,16 @@ import java.util.Map;
 
 public class EditUserServlet extends HttpServlet {
 
+    UserService userService;
+
+    public EditUserServlet(UserService userService) {
+        this.userService = userService;
+    }
+
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws ServletException, IOException {
 
-                User user = WebUtil.getUserFromRequest(request);
+        User user = WebUtil.getUserFromRequest(request);
 
         Map<String, Object> root = new HashMap<>();
         root.put("user", user);
@@ -33,9 +39,7 @@ public class EditUserServlet extends HttpServlet {
     public void doPost(HttpServletRequest request,
                        HttpServletResponse response) throws ServletException, IOException {
 
-        UserService userService = UserService.getInstance();
         User user = WebUtil.getUserFromRequest(request);
-
 
         response.setContentType("text/html;charset=utf-8");
         Map<String, Object> pageVariables = new HashMap<>();

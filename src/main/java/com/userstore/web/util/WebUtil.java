@@ -6,12 +6,13 @@ import com.userstore.entity.User;
 import javax.servlet.http.HttpServletRequest;
 
 public class WebUtil {
-    public static User getUserFromRequest (HttpServletRequest request) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String firstName = request.getParameter("first_name");
-        String lastName = request.getParameter("last_name");
-        int salary= Integer.parseInt(request.getParameter("salary"));
+    public static User getUserFromRequest(HttpServletRequest request) {
+        User user = new User();
+        user.setId(Integer.parseInt(request.getParameter("id")));
+        user.setFirstName(request.getParameter("first_name"));
+        user.setLastName(request.getParameter("last_name"));
+        user.setSalary(Integer.parseInt(request.getParameter("salary")));
 
-        return new User(id, firstName, lastName, salary);
+        return user;
     }
 }
